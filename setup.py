@@ -213,8 +213,8 @@ if __name__ == '__main__':
         platform_lst += ['win_amd64']
         installers_dct['win_amd64'] = ['xztar', 'nsis']
     if all('--nolinux' not in arg for arg in argv):
-        platform_lst += ['manylinux1_x86_64']
-        installers_dct['manylinux1_x86_64'] = ['xztar']
+        platform_lst += ['manylinux2014_x86_64']
+        installers_dct['manylinux2014_x86_64'] = ['xztar']
     appname = AbsCmd.env['APPNAME']
     setup(
         name=appname,
