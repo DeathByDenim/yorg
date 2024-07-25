@@ -135,7 +135,7 @@ class Yorg(Game):
                 'countdown_seconds': 3,
                 'xmpp_debug': 0,
                 'xmpp_server': 'ya2_yorg@jabb3r.org',
-                'server': 'ya2tech.it:9099',
+                'server': 'play.onfoss.org:9099',
                 'server_dev': 'ya2tech.it:9098',
                 'mp_srv_usr': '',
                 'fixed_fps': 0,
