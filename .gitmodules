@@ -1,6 +1,6 @@
 [submodule "yyagl"]
 	path = yyagl
-	url = git@github.com:cflavio/yyagl
+	url = git@github.com:DeathByDenim/yyagl.git
 	branch = stable
 [submodule "yracing"]
 	path = yracing
