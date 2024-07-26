@@ -1,0 +1,40 @@
+name: Build
+
+jobs:
+  assets:
+    name: Build assets
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      - run: virtualenv venv
+      - run: source ./venv/bin/activate
+      - run: python setup.py lang images models
+      - run: tar cf assets.tar assets
+      - name: Upload assets
+        uses: actions/upload-artifact@v4
+        with:
+          name: assets
+          path: assets.tar
+  appimage:
+    name: Build AppImage
+    needs: assets
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+        uses: actions/download-artifact@v4
+        with:
+          name: assets
+      - run: tar xf assets.tar
+      - run: virtualenv venv
+      - run: source ./venv/bin/activate
+      - run: python setup.py appimage
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: built/Yorg-x86_64.AppImage
